@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import HeroScene from '../components/HeroScene'
+import HeroSceneWithFallback from '../components/HeroSceneWithFallback'
 import './Home.css'
 
 const TYPE_SPEED = 90
@@ -87,7 +87,7 @@ export default function Home() {
 
   return (
     <section id="home" className="home">
-      <HeroScene />
+      <HeroSceneWithFallback />
 
       <div className="hero-content">
         <motion.div
