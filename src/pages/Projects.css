@@ -1,0 +1,230 @@
+.projects-page {
+  background: var(--bg-primary);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  position: relative;
+  padding: 8px 20px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: rgba(139, 115, 85, 0.08);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.project-card {
+  position: relative;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  animation: cardFadeIn 0.4s ease both;
+  animation-delay: var(--stagger, 0s);
+}
+
+.project-card:hover {
+  border-color: var(--card-accent, var(--accent));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.card-number {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.card-links {
+  display: flex;
+  gap: 8px;
+}
+
+.card-link {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background: rgba(139, 115, 85, 0.08);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.card-link:hover {
+  background: rgba(139, 115, 85, 0.15);
+  color: var(--text-primary);
+}
+
+.card-title {
+  font-family: 'Lora', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.card-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-tag {
+  padding: 4px 10px;
+  background: rgba(139, 115, 85, 0.06);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  transition: gap 0.2s ease;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: none;
+}
+
+.project-card:hover .card-footer {
+  gap: 8px;
+}
+
+/* Project detail modal */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(44, 40, 37, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.project-modal {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 32px;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.project-modal-close:hover {
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.project-modal-content {
+  padding-right: 32px;
+}
+
+.project-modal-title {
+  font-family: 'Lora', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-modal {
+    padding: 24px;
+  }
+
+  .project-modal-content {
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,93 @@
+:root {
+  --bg-primary: #f2ebe3;
+  --bg-secondary: #e8e0d5;
+  --bg-card: #faf7f2;
+  --text-primary: #2c2825;
+  --text-secondary: #6b6259;
+  --accent: #8b7355;
+  --accent-secondary: #7d6e5c;
+  --accent-warm: #a67c52;
+  --border-color: rgba(139, 115, 85, 0.2);
+  --font-primary: 'Source Sans 3', sans-serif;
+  --font-mono: 'Source Sans 3', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 0;
+}
+
+::selection {
+  background: rgba(139, 115, 85, 0.25);
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-primary);
+  cursor: none !important;
+}
+
+input, textarea {
+  font-family: var(--font-primary);
+  cursor: none !important;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 120px 60px 80px;
+  position: relative;
+}
+
+.section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 100px 24px 60px;
+  }
+}
