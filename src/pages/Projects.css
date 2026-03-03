@@ -33,10 +33,23 @@
   background: rgba(139, 115, 85, 0.08);
 }
 
+.projects-subsection-title {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 48px;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 24px;
+}
+
+.projects-grid.in-progress-grid {
+  margin-top: 0;
 }
 
 @keyframes cardFadeIn {
@@ -64,12 +77,22 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
-.card-header {
+.card-header,
+.card-title-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.card-title-row {
+  gap: 12px;
   position: relative;
   z-index: 1;
+}
+
+.card-title-row .card-title {
+  flex: 1;
+  min-width: 0;
 }
 
 .card-number {

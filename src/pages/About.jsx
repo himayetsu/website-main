@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { getCompletedProjectsCount } from '../data/projects'
 import './About.css'
 
 // Fill colour from site accent: low level = pale/gray, high level = saturated brown
@@ -38,7 +39,7 @@ const skills = [
 
 const stats = [
   { label: 'Professional experience', value: '2+ years' },
-  { label: 'Projects completed', value: '15' },
+  { label: 'Projects completed', value: String(getCompletedProjectsCount()) },
 ]
 
 const vp = { once: true, margin: '-100px' }

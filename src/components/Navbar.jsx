@@ -5,8 +5,8 @@ import './Navbar.css'
 const navItems = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'resume', label: 'Resume' },
   { id: 'projects', label: 'Projects' },
+  { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -50,7 +50,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <button className="nav-logo" onClick={() => scrollTo('home')} data-hover>
-        <span className="logo-text">HenryLi</span>
+        <span className="logo-text">henryli</span>
       </button>
 
       <div className="nav-links">

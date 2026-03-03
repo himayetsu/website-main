@@ -115,7 +115,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.7 }}
         >
-          Computer Engineering student building high-performance software systems
+          Software developer seeking bold opportunities
         </motion.p>
 
         <motion.div
