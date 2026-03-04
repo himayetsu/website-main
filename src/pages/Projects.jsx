@@ -12,18 +12,30 @@ function getCategories(p) {
 const allProjects = [...completedProjects, ...inProgressProjects]
 const categories = ['all', ...[...new Set(allProjects.flatMap((p) => getCategories(p)))].sort()]
 
-const cardLinks = (project) => (
-  <div className="card-links">
-    <a href={project.github} data-hover className="card-link" target="_blank" rel="noopener noreferrer">
-      <Github size={18} />
-    </a>
-    <a href={project.live} data-hover className="card-link" target="_blank" rel="noopener noreferrer">
-      <ExternalLink size={18} />
-    </a>
-  </div>
-)
+const hasLink = (url) => url && url !== '#'
 
-function ProjectCard({ project, index, onViewDetails, showId = true }) {
+const cardLinks = (project) => {
+  const showGithub = hasLink(project.github)
+  const showLive = hasLink(project.live)
+  if (!showGithub && !showLive) return null
+
+  return (
+    <div className="card-links">
+      {showGithub && (
+        <a href={project.github} data-hover className="card-link" target="_blank" rel="noopener noreferrer">
+          <Github size={18} />
+        </a>
+      )}
+      {showLive && (
+        <a href={project.live} data-hover className="card-link" target="_blank" rel="noopener noreferrer">
+          <ExternalLink size={18} />
+        </a>
+      )}
+    </div>
+  )
+}
+
+function ProjectCard({ project, displayNumber, index, onViewDetails, showId = true }) {
   return (
     <div
       className="project-card"
@@ -32,7 +44,7 @@ function ProjectCard({ project, index, onViewDetails, showId = true }) {
       {showId ? (
         <div className="card-header">
           <div className="card-number" style={{ color: project.color }}>
-            {String(project.id).padStart(2, '0')}
+            {String(displayNumber).padStart(2, '0')}
           </div>
           {cardLinks(project)}
         </div>
@@ -104,7 +116,13 @@ export default function Projects() {
 
       <div className="projects-grid">
         {filtered.map((project, i) => (
-          <ProjectCard key={project.id} project={project} index={i} onViewDetails={() => openModal(project)} />
+          <ProjectCard
+            key={`completed-${completedProjects.indexOf(project)}`}
+            project={project}
+            displayNumber={completedProjects.indexOf(project) + 1}
+            index={i}
+            onViewDetails={() => openModal(project)}
+          />
         ))}
       </div>
 
@@ -113,7 +131,14 @@ export default function Projects() {
           <h3 className="projects-subsection-title">In progress</h3>
           <div className="projects-grid in-progress-grid">
             {filteredInProgress.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} onViewDetails={() => openModal(project)} showId={false} />
+              <ProjectCard
+                key={`inprogress-${inProgressProjects.indexOf(project)}`}
+                project={project}
+                displayNumber={0}
+                index={i}
+                onViewDetails={() => openModal(project)}
+                showId={false}
+              />
             ))}
           </div>
         </>
