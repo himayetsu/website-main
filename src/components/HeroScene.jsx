@@ -123,7 +123,7 @@ function WaveSphere() {
   }, [])
 
   useFrame((state) => {
-    if (!meshRef.current) return
+    if (!meshRef.current?.geometry || !wireRef.current?.geometry) return
     const t = state.clock.elapsedTime * 2
     const pos = meshRef.current.geometry.attributes.position
     const wPos = wireRef.current.geometry.attributes.position
@@ -354,8 +354,9 @@ function ParticleCloud() {
   }, [])
 
   useFrame((state) => {
-    const t = state.clock.elapsedTime
     const geo = ref.current
+    if (!geo?.attributes?.position) return
+    const t = state.clock.elapsedTime
     const pos = geo.attributes.position
     for (let i = 0; i < count; i++) {
       const ix = i * 3
@@ -408,6 +409,7 @@ function FloatingParticles() {
   }, [])
 
   useFrame((state) => {
+    if (!ref.current || !meshRef.current?.attributes?.position) return
     const t = state.clock.elapsedTime
     mouseSmooth.current.x += (state.pointer.x - mouseSmooth.current.x) * 0.02
     mouseSmooth.current.y += (state.pointer.y - mouseSmooth.current.y) * 0.02
