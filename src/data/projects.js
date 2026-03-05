@@ -48,7 +48,7 @@ export const completedProjects = [
   },
   {
     title: 'Planetoids',
-    description: 'Web-based asteroid field game with configurable physics and visuals. Canvas-based rendering with a settings panel.',
+    description: 'Procedural asteroid field game. Ray-marched 3D noise in WebGL (regl) with the same field ported to JavaScript for collision.',
     tags: ['JavaScript', 'Canvas', 'HTML/CSS'],
     color: '#8b7355',
     github: 'https://github.com/himayetsu/Planetoids',
